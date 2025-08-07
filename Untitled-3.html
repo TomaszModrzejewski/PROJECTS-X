@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPS Setup Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your Guide to Setting Up a New VPS</h1>
+            <p>Follow these steps to get your server up and running securely.</p>
+        </header>
+
+        <main>
+            <section id="step1">
+                <h2>Step 1: Choose a Provider and Deploy a Server</h2>
+                <p>Select a VPS provider (like DigitalOcean, Linode, Vultr, or AWS Lightsail). Choose a server size and an operating system (Ubuntu 22.04 LTS is a great choice). Once deployed, you will receive an IP address for your server.</p>
+            </section>
+
+            <section id="step2">
+                <h2>Step 2: Initial Server Connection</h2>
+                <p>Connect to your server for the first time using SSH. You will typically log in as the 'root' user.</p>
+                <code>ssh root@YOUR_SERVER_IP</code>
+            </section>
+
+            <section id="step3">
+                <h2>Step 3: Create a New User and Grant Privileges</h2>
+                <p>It's a security best practice to not use the root user for everyday tasks. Create a new user and give them administrative (sudo) privileges.</p>
+                <code>adduser your_new_user</code><br>
+                <code>usermod -aG sudo your_new_user</code>
+            </section>
+
+            <section id="step4">
+                <h2>Step 4: Basic Security - Firewall Setup</h2>
+                <p>Set up a basic firewall to protect your server. UFW (Uncomplicated Firewall) is easy to use. Allow SSH, HTTP, and HTTPS traffic.</p>
+                <code>ufw allow OpenSSH</code><br>
+                <code>ufw allow 'Nginx Full'</code><br>
+                <code>ufw enable</code>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

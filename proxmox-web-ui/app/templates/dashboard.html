@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Proxmox Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Proxmox Dashboard</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vm in vms %}
+                <tr>
+                    <td>{{ vm.name }}</td>
+                    <td>{{ vm.status }}</td>
+                    <td>
+                        <a href="{{ url_for('start_vm', node=vm.node, vmid=vm.vmid) }}" class="btn btn-success">Start</a>
+                        <a href="{{ url_for('stop_vm', node=vm.node, vmid=vm.vmid) }}" class="btn btn-danger">Stop</a>
+                        <a href="{{ url_for('reboot_vm', node=vm.node, vmid=vm.vmid) }}" class="btn btn-warning">Reboot</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
